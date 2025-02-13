@@ -243,9 +243,44 @@ class FriendshipCalculatorScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Friendship Calculator'),
+        backgroundColor: Colors.pink,
       ),
-      body: Center(
-        child: Text('Friendship Calculator Screen'),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.pink.shade200, Colors.pink.shade400],
+          ),
+        ),
+        child: Center(
+          child: Card(
+            margin: EdgeInsets.all(16),
+            elevation: 10,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.favorite, size: 50, color: Colors.pink),
+                  SizedBox(height: 20),
+                  Text(
+                    'Friendship Calculator',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    'Coming Soon!',
+                    style: TextStyle(fontSize: 18, color: Colors.grey),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -254,8 +289,7 @@ class FriendshipCalculatorScreen extends StatelessWidget {
 // Currency Converter Screen
 class CurrencyConverterScreen extends StatefulWidget {
   @override
-  _CurrencyConverterScreenState createState() =>
-      _CurrencyConverterScreenState();
+  _CurrencyConverterScreenState createState() => _CurrencyConverterScreenState();
 }
 
 class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
@@ -264,7 +298,7 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
 
   void _convertCurrency() {
     double amount = double.tryParse(_amountController.text) ?? 0.0;
-    double conversionRate = 280.0; // Example: 1 USD = 0.85 EUR
+    double conversionRate = 280.0; // Example: 1 USD = 280 PKR
     double convertedAmount = amount * conversionRate;
     setState(() {
       _convertedAmount = 'Converted Amount: $convertedAmount PKR';
@@ -276,25 +310,57 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Currency Converter'),
+        backgroundColor: Colors.green,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _amountController,
-              decoration: InputDecoration(labelText: 'Enter Amount in USD'),
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _convertCurrency,
-              child: Text('Convert'),
-            ),
-            SizedBox(height: 20),
-            Text(_convertedAmount,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.green.shade200, Colors.green.shade400],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      TextField(
+                        controller: _amountController,
+                        decoration: InputDecoration(
+                          labelText: 'Enter Amount in USD',
+                          border: OutlineInputBorder(),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: _convertCurrency,
+                        child: Text('Convert',style: TextStyle(color: Colors.white)),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green,
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                _convertedAmount,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -308,8 +374,7 @@ class TemperatureConverterScreen extends StatefulWidget {
       _TemperatureConverterScreenState();
 }
 
-class _TemperatureConverterScreenState
-    extends State<TemperatureConverterScreen> {
+class _TemperatureConverterScreenState extends State<TemperatureConverterScreen> {
   final TextEditingController _celsiusController = TextEditingController();
   String _fahrenheit = '';
 
@@ -326,28 +391,57 @@ class _TemperatureConverterScreenState
     return Scaffold(
       appBar: AppBar(
         title: Text('Temperature Converter'),
+        backgroundColor: Colors.orange,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _celsiusController,
-              decoration:
-                  InputDecoration(labelText: 'Enter Temperature in Celsius'),
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _convertToFahrenheit,
-              child: Text('Convert to Fahrenheit'),
-            ),
-            SizedBox(height: 20),
-            Text(
-              _fahrenheit,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.orange.shade200, Colors.orange.shade400],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      TextField(
+                        controller: _celsiusController,
+                        decoration: InputDecoration(
+                          labelText: 'Enter Temperature in Celsius',
+                          border: OutlineInputBorder(),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: _convertToFahrenheit,
+                        child: Text('Convert to Fahrenheit',style: TextStyle(color: Colors.white)),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.orange,
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                _fahrenheit,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -385,32 +479,66 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('BMI Calculator'),
+        backgroundColor: Colors.blue,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _heightController,
-              decoration: InputDecoration(labelText: 'Enter Height in cm'),
-              keyboardType: TextInputType.number,
-            ),
-            TextField(
-              controller: _weightController,
-              decoration: InputDecoration(labelText: 'Enter Weight in kg'),
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _calculateBMI,
-              child: Text('Calculate BMI'),
-            ),
-            SizedBox(height: 20),
-            Text(
-              _bmiResult,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.blue.shade200, Colors.blue.shade400],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      TextField(
+                        controller: _heightController,
+                        decoration: InputDecoration(
+                          labelText: 'Enter Height in cm',
+                          border: OutlineInputBorder(),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 20),
+                      TextField(
+                        controller: _weightController,
+                        decoration: InputDecoration(
+                          labelText: 'Enter Weight in kg',
+                          border: OutlineInputBorder(),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: _calculateBMI,
+                        child: Text('Calculate BMI',style: TextStyle(color: Colors.white)),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue,
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                _bmiResult,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -440,27 +568,57 @@ class _LengthConverterScreenState extends State<LengthConverterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Length Converter'),
+        backgroundColor: Colors.purple,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _metersController,
-              decoration: InputDecoration(labelText: 'Enter Length in Meters'),
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _convertToFeet,
-              child: Text('Convert to Feet'),
-            ),
-            SizedBox(height: 20),
-            Text(
-              _feet,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.purple.shade200, Colors.purple.shade400],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      TextField(
+                        controller: _metersController,
+                        decoration: InputDecoration(
+                          labelText: 'Enter Length in Meters',
+                          border: OutlineInputBorder(),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: _convertToFeet,
+                        child: Text('Convert to Feet',style: TextStyle(color: Colors.white)),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.purple,
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                _feet,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -490,28 +648,57 @@ class _AreaConverterScreenState extends State<AreaConverterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Area Converter'),
+        backgroundColor: Colors.teal,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _squareMetersController,
-              decoration:
-                  InputDecoration(labelText: 'Enter Area in Square Meters'),
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _convertToSquareFeet,
-              child: Text('Convert to Square Feet'),
-            ),
-            SizedBox(height: 20),
-            Text(
-              _squareFeet,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.teal.shade200, Colors.teal.shade400],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      TextField(
+                        controller: _squareMetersController,
+                        decoration: InputDecoration(
+                          labelText: 'Enter Area in Square Meters',
+                          border: OutlineInputBorder(),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: _convertToSquareFeet,
+                        child: Text('Convert to Square Feet',style: TextStyle(color: Colors.white)),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.teal,
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                _squareFeet,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -541,27 +728,57 @@ class _VolumeConverterScreenState extends State<VolumeConverterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Volume Converter'),
+        backgroundColor: Colors.indigo,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _litersController,
-              decoration: InputDecoration(labelText: 'Enter Volume in Liters'),
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _convertToGallons,
-              child: Text('Convert to Gallons'),
-            ),
-            SizedBox(height: 20),
-            Text(
-              _gallons,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.indigo.shade200, Colors.indigo.shade400],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      TextField(
+                        controller: _litersController,
+                        decoration: InputDecoration(
+                          labelText: 'Enter Volume in Liters',
+                          border: OutlineInputBorder(),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: _convertToGallons,
+                        child: Text('Convert to Gallons',style: TextStyle(color: Colors.white)),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.indigo,
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                _gallons,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -592,28 +809,57 @@ class _WeightMassConverterScreenState extends State<WeightMassConverterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Weight and Mass Converter'),
+        backgroundColor: Colors.red,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _kilogramsController,
-              decoration:
-                  InputDecoration(labelText: 'Enter Weight in Kilograms'),
-              keyboardType: TextInputType.number,
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _convertToPounds,
-              child: Text('Convert to Pounds'),
-            ),
-            SizedBox(height: 20),
-            Text(
-              _pounds,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.red.shade200, Colors.red.shade400],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      TextField(
+                        controller: _kilogramsController,
+                        decoration: InputDecoration(
+                          labelText: 'Enter Weight in Kilograms',
+                          border: OutlineInputBorder(),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: _convertToPounds,
+                        child: Text('Convert to Pounds',style: TextStyle(color: Colors.white)),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red,
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                _pounds,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -640,7 +886,7 @@ class _TimeConverterBelgiumToPakistanScreenState
       DateTime pakistanDateTime = belgiumDateTime.add(Duration(hours: 4));
       setState(() {
         _pakistanTime =
-            'Pakistan Time: ${pakistanDateTime.hour}:${pakistanDateTime.minute}';
+        'Pakistan Time: ${pakistanDateTime.hour}:${pakistanDateTime.minute}';
       });
     } catch (e) {
       setState(() {
@@ -654,28 +900,57 @@ class _TimeConverterBelgiumToPakistanScreenState
     return Scaffold(
       appBar: AppBar(
         title: Text('Time Converter (Belgium to Pakistan)'),
+        backgroundColor: Colors.amber,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _belgiumTimeController,
-              decoration:
-                  InputDecoration(labelText: 'Enter Time in Belgium (HH:MM)'),
-              keyboardType: TextInputType.datetime,
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _convertToPakistanTime,
-              child: Text('Convert to Pakistan Time'),
-            ),
-            SizedBox(height: 20),
-            Text(
-              _pakistanTime,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.amber.shade200, Colors.amber.shade400],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      TextField(
+                        controller: _belgiumTimeController,
+                        decoration: InputDecoration(
+                          labelText: 'Enter Time in Belgium (HH:MM)',
+                          border: OutlineInputBorder(),
+                        ),
+                        keyboardType: TextInputType.datetime,
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: _convertToPakistanTime,
+                        child: Text('Convert to Pakistan Time'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.amber,
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                _pakistanTime,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -718,28 +993,57 @@ class _AgeCalculatorScreenState extends State<AgeCalculatorScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Age Calculator'),
+        backgroundColor: Colors.cyan,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _dobController,
-              decoration: InputDecoration(
-                  labelText: 'Enter Date of Birth (YYYY-MM-DD)'),
-              keyboardType: TextInputType.datetime,
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _calculateAge,
-              child: Text('Calculate Age'),
-            ),
-            SizedBox(height: 20),
-            Text(
-              _age,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.cyan.shade200, Colors.cyan.shade400],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      TextField(
+                        controller: _dobController,
+                        decoration: InputDecoration(
+                          labelText: 'Enter Date of Birth (YYYY-MM-DD)',
+                          border: OutlineInputBorder(),
+                        ),
+                        keyboardType: TextInputType.datetime,
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: _calculateAge,
+                        child: Text('Calculate Age'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.cyan,
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                _age,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -778,37 +1082,76 @@ class _TimeConverterHMSToScreenState extends State<TimeConverterHMSToScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Time Converter (H to M or M to Sec)'),
+        title: Text('Time Converter(H to M or M to Sec)',style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.deepPurple,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _hoursController,
-              decoration: InputDecoration(labelText: 'Enter Hours'),
-              keyboardType: TextInputType.number,
-            ),
-            ElevatedButton(
-              onPressed: _convertToMinutes,
-              child: Text('Convert Hours to Minutes'),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              controller: _minutesController,
-              decoration: InputDecoration(labelText: 'Enter Minutes'),
-              keyboardType: TextInputType.number,
-            ),
-            ElevatedButton(
-              onPressed: _convertToSeconds,
-              child: Text('Convert Minutes to Seconds'),
-            ),
-            SizedBox(height: 20),
-            Text(
-              _convertedTime,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.deepPurple.shade200, Colors.deepPurple.shade400],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      TextField(
+                        controller: _hoursController,
+                        decoration: InputDecoration(
+                          labelText: 'Enter Hours',
+                          border: OutlineInputBorder(),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: _convertToMinutes,
+                        child: Text('Convert Hours to Minutes',style: TextStyle(color: Colors.white)),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.deepPurple,
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      TextField(
+                        controller: _minutesController,
+                        decoration: InputDecoration(
+                          labelText: 'Enter Minutes',
+                          border: OutlineInputBorder(),
+                        ),
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: _convertToSeconds,
+                        child: Text('Convert Minutes to Seconds',style: TextStyle(color: Colors.white),),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.deepPurple,
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                _convertedTime,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold ,),
+              ),
+            ],
+          ),
         ),
       ),
     );
