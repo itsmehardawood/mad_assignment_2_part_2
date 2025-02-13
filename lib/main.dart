@@ -20,18 +20,62 @@ class MyApp extends StatelessWidget {
 
 // Main Menu Screen
 class MainMenuScreen extends StatelessWidget {
-  final List<String> operations = [
-    'Friendship Calculator',
-    'Currency Converter',
-    'Temperature Converter',
-    'BMI Calculator',
-    'Length Converter',
-    'Area Converter',
-    'Volume Converter',
-    'Weight and Mass Converter',
-    'Time Converter (Belgium to Pakistan)',
-    'Age Calculator',
-    'Time Converter (H to M or M to Sec)',
+  final List<Map<String, dynamic>> operations = [
+    {
+      'title': 'Friendship Calculator',
+      'icon': Icons.favorite,
+      'color': Colors.pink,
+    },
+    {
+      'title': 'Currency Converter',
+      'icon': Icons.attach_money,
+      'color': Colors.green,
+    },
+    {
+      'title': 'Temperature Converter',
+      'icon': Icons.thermostat,
+      'color': Colors.orange,
+    },
+    {
+      'title': 'BMI Calculator',
+      'icon': Icons.monitor_weight,
+      'color': Colors.blue,
+    },
+    {
+      'title': 'Length Converter',
+      'icon': Icons.straighten,
+      'color': Colors.purple,
+    },
+    {
+      'title': 'Area Converter',
+      'icon': Icons.crop_square,
+      'color': Colors.teal,
+    },
+    {
+      'title': 'Volume Converter',
+      'icon': Icons.invert_colors,
+      'color': Colors.indigo,
+    },
+    {
+      'title': 'Weight and Mass Converter',
+      'icon': Icons.fitness_center,
+      'color': Colors.red,
+    },
+    {
+      'title': 'Time Converter (Belgium to Pakistan)',
+      'icon': Icons.access_time,
+      'color': Colors.amber,
+    },
+    {
+      'title': 'Age Calculator',
+      'icon': Icons.cake,
+      'color': Colors.cyan,
+    },
+    {
+      'title': 'Time Converter (H to M or M to Sec)',
+      'icon': Icons.timer,
+      'color': Colors.deepPurple,
+    },
   ];
 
   @override
@@ -42,117 +86,151 @@ class MainMenuScreen extends StatelessWidget {
         backgroundColor: Colors.black,
         title: Text(
           'Multi-Functional App',
-          style: TextStyle(color: Colors.white,fontSize: 24,fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
+        elevation: 10,
       ),
-      body: ListView.builder(
-        itemCount: operations.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                operations[index],
-                style: TextStyle(color: Colors.white, fontSize: 18),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.teal.shade800,
+              Colors.teal.shade900,
+            ],
+          ),
+        ),
+        child: ListView.builder(
+          itemCount: operations.length,
+          itemBuilder: (context, index) {
+            return Card(
+              margin: EdgeInsets.symmetric(horizontal: 20 , vertical: 8),
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
               ),
-            ),
-            onTap: () {
-              // Navigate to the respective operation screen
-              switch (index) {
-                case 0:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => FriendshipCalculatorScreen(),
-                    ),
-                  );
-                  break;
-                case 1:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => CurrencyConverterScreen(),
-                    ),
-                  );
-                  break;
-                case 2:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => TemperatureConverterScreen(),
-                    ),
-                  );
-                  break;
-                case 3:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => BMICalculatorScreen(),
-                    ),
-                  );
-                  break;
-                case 4:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LengthConverterScreen(),
-                    ),
-                  );
-                  break;
-                case 5:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AreaConverterScreen(),
-                    ),
-                  );
-                  break;
-                case 6:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => VolumeConverterScreen(),
-                    ),
-                  );
-                  break;
-                case 7:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => WeightMassConverterScreen(),
-                    ),
-                  );
-                  break;
-                case 8:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          TimeConverterBelgiumToPakistanScreen(),
-                    ),
-                  );
-                  break;
-                case 9:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AgeCalculatorScreen(),
-                    ),
-                  );
-                  break;
-                case 10:
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => TimeConverterHMSToScreen(),
-                    ),
-                  );
-                  break;
-              }
-            },
-          );
-        },
+              child: ListTile(
+                leading: Icon(
+                  operations[index]['icon'],
+                  color: operations[index]['color'],
+                  size: 30,
+                ),
+                title: Text(
+                  operations[index]['title'],
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black87,
+                  ),
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.grey.shade600,
+                ),
+                onTap: () {
+                  // Navigate to the respective operation screen
+                  switch (index) {
+                    case 0:
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FriendshipCalculatorScreen(),
+                        ),
+                      );
+                      break;
+                    case 1:
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CurrencyConverterScreen(),
+                        ),
+                      );
+                      break;
+                    case 2:
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TemperatureConverterScreen(),
+                        ),
+                      );
+                      break;
+                    case 3:
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BMICalculatorScreen(),
+                        ),
+                      );
+                      break;
+                    case 4:
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LengthConverterScreen(),
+                        ),
+                      );
+                      break;
+                    case 5:
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AreaConverterScreen(),
+                        ),
+                      );
+                      break;
+                    case 6:
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => VolumeConverterScreen(),
+                        ),
+                      );
+                      break;
+                    case 7:
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WeightMassConverterScreen(),
+                        ),
+                      );
+                      break;
+                    case 8:
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              TimeConverterBelgiumToPakistanScreen(),
+                        ),
+                      );
+                      break;
+                    case 9:
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AgeCalculatorScreen(),
+                        ),
+                      );
+                      break;
+                    case 10:
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TimeConverterHMSToScreen(),
+                        ),
+                      );
+                      break;
+                  }
+                },
+              ),
+            );
+          },
+        ),
       ),
     );
   }
